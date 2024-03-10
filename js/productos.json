@@ -1,0 +1,8 @@
+[
+    {"id":1, "nombre":"Remera Rocky", "precio":5500, "talle":"L", "imagen":"https://acdn.mitiendanube.com/stores/064/882/products/remera_certified_estampados_mockup_111-b1387fef97ddd49a1715742651392720-1024-1024.webp"},
+    {"id":2, "nombre":"Remera Mick", "precio":5500, "talle":"M", "imagen":"https://http2.mlstatic.com/D_NQ_NP_905232-MLA53567042964_022023-O.webp"},
+    {"id":3, "nombre":"Musculosa", "precio":4500, "talle":"M", "imagen":"https://grafimax.cl/cdn/shop/products/D_755868-MLC45830332869_052021-B_dd2bcd80-788a-467e-9a2b-54bfd4a93e67.jpg?v=1691159966"},
+    {"id":4, "nombre":"Short", "precio":5500, "talle":"M", "imagen":"https://images.squarespace-cdn.com/content/v1/56a44a68cbced66ef85f1331/1458800014665-OBP4ZWTO3A4KQLUDAP58/Rocky+Italian+Stallion+Shorts+1.jpg?format=1000w"},
+    {"id":5, "nombre":"Gorra", "precio":2500, "talle":"12", "imagen":"https://acdn.mitiendanube.com/stores/001/473/111/products/gorra-de-rocky-balboa-series-peliculas1-1d94280c53086c038b16642175535939-640-0.jpg"},
+    {"id":6, "nombre":"Guantes Recortados", "precio":15500, "talle":"12 Oz.", "imagen":"https://i.pinimg.com/736x/47/ca/b1/47cab106c0a9ebb95da4925e951f135d.jpg"}
+  ]
