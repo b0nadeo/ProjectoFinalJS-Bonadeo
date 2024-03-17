@@ -7,18 +7,6 @@ let pagina = document.getElementById("pagina")
 pagina.innerHTML= "Hola! Les presento nuestros productos"
 pagina.className= "ms-3 mt-4 fs-5"
 
-//Array de productos por JSON
-fetch('./js/productos.json')
-  .then(devuelve => devuelve.json())
-  .then(ropa => {
-    let arrayJson = JSON.stringify(ropa);
-    localStorage.setItem('Productos', arrayJson);
-  });
-
-  const obtenerProductosLS = () => {
-    return JSON.parse(localStorage.getItem("Productos")) || [];
-  }
-
     
 const arrayDeProductos = async () => {
   const respuesta = await fetch('./js/productos.json')
@@ -42,6 +30,7 @@ const arrayDeProductos = async () => {
 
          
    }}
+
  
 function cartelToastify() {Toastify({
 
@@ -50,15 +39,33 @@ function cartelToastify() {Toastify({
   duration: 3000
   
   }).showToast();
+
+  
 }
 
-productosRopa.onclick = cartelToastify;
+// productosRopa.onclick = cartelToastify;
+
+arrayDeProductos()
     
     
 const verProductoClickeado = (id) => {
   localStorage.setItem("Producto", JSON.stringify(id));
+  cartelToastify();
 }
 
+
+//Array de productos por JSON
+fetch('./js/productos.json')
+  .then(devuelve => devuelve.json())
+  .then(ropa => {
+    let arrayJson = JSON.stringify(ropa);
+    localStorage.setItem('Productos', arrayJson);
+  });
+
+  
+
+const productosLS = localStorage.getItem('Productos');
+const productosRecuperadosLS = JSON.parse(productosLS);
 
 
 
@@ -66,28 +73,60 @@ const verProductoClickeado = (id) => {
 document.getElementById("tituloFormulario").innerHTML= `¿Tenés alguna duda de nuestros productos? Contactate con nosotros`
 document.getElementById("tituloFormulario").className= "py-4 mt-5"
 
-let inputNombre = document.getElementById("nombre");
-let inputEmail = document.getElementById("email");
 
-inputEmail.onkeyup=() => {
-    let chequeoEmail = document.getElementById("chequeoEmail");
 
-    if (correccionEmail(inputEmail.value)){
-        chequeoEmail.innerHTML= `<div class="alert alert-success" role="alert">Email agregado correctamente!</div>`
-    }
-    else{ 
-        chequeoEmail.innerHTML= `<div class="alert alert-danger" role="alert">EMAIL INVÁLIDO!</div>`
-    }
-    }
 
-function correccionEmail(email) {
-    if (email.includes("@")) {
-        return true
-    } else {
-        return false
-    }
+  
+document.getElementById("dudaForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+let inputNombre = document.getElementById("nombre").value;
+let inputEmail = document.getElementById("email").value;
+let inputDuda = document.getElementById("duda").value;
+
+let datosDelForm = {
+  inputNombre,
+  inputEmail,
+  inputDuda
 }
 
-arrayDeProductos()
+let formJson = JSON.stringify(datosDelForm);
+
+localStorage.setItem("datoDelForm", formJson);})
+
+let inputEmail = document.getElementById("email")
+inputEmail.onkeyup=() => {
+  let chequeoEmail = document.getElementById("chequeoEmail");
+
+  if (correccionEmail(inputEmail.value)){
+      chequeoEmail.innerHTML= `<div class="alert alert-success" role="alert">Email agregado correctamente!</div>`
+  }
+  else{ 
+      chequeoEmail.innerHTML= `<div class="alert alert-danger" role="alert">EMAIL INVÁLIDO!</div>`
+  }
+  }
+
+function correccionEmail(email) {
+  if (email.includes("@")) {
+      return true
+  } else {
+      return false
+  }
+}
+
+
+
+
+
+
+  
+
+
+function guardarEmailLS() {
+  let email = document.getElementById("email");
+  localStorage.setItem("Email Usuario" , JSON.stringify(email.value));
+}
+
+
 
   /////////////////////////////////////
