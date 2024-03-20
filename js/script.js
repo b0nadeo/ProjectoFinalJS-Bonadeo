@@ -1,13 +1,10 @@
-// DOM
-//Modificar elementos por nodos
-document.body.children[0].innerHTML = "Tienda <b>Balboa Fitness</b>"
+document.body.children[0].innerHTML = `<a href="./index.html" class="border border-secondary text-dark text-decoration-none px-2"><img src="./images/logo.png" height="38px" width="38px" alt="logo">Tienda <b>Balboa Fitness</b></a>`
 document.body.children[0].className= "ms-3 fs-1" 
 
 let pagina = document.getElementById("pagina")
-pagina.innerHTML= "Hola! Les presento nuestros productos"
+pagina.innerHTML= "Hola! Les presentamos nuestros productos"
 pagina.className= "ms-3 mt-4 fs-5"
 
-    
 const arrayDeProductos = async () => {
   const respuesta = await fetch('./js/productos.json')
   const arrayJson = await respuesta.json();
@@ -20,63 +17,42 @@ const arrayDeProductos = async () => {
         <div class="card-body">
           <h5 class="card-title"><b>${pilcha.nombre}</b></h5>
           <p class="card-text fs-5">Talle: ${pilcha.talle} <br> Precio: <b>$${pilcha.precio}</b></p>
-          <btn onclick="verProductoClickeado(${pilcha.id})" class="btn btn-primary">Agregar al carrito</btn>
+          <btn onclick="verProductoClickeado(${pilcha.id}), agregarALaCompra()" class="btn btn-primary">Agregar al carrito</btn>
         </div>
       </div>`
     
-      productosRopa.appendChild(prenda);
-
-      
-
-         
+      productosRopa.appendChild(prenda);    
    }}
 
- 
 function cartelToastify() {Toastify({
-
   text: "Producto agregado correctamente!",
-  
   duration: 3000
-  
-  }).showToast();
-
-  
+  }).showToast(); 
 }
-
-// productosRopa.onclick = cartelToastify;
 
 arrayDeProductos()
-    
-    
+      
 const verProductoClickeado = (id) => {
-  localStorage.setItem("Producto", JSON.stringify(id));
+  localStorage.setItem("producto", JSON.stringify(id));
   cartelToastify();
 }
-
 
 //Array de productos por JSON
 fetch('./js/productos.json')
   .then(devuelve => devuelve.json())
   .then(ropa => {
     let arrayJson = JSON.stringify(ropa);
-    localStorage.setItem('Productos', arrayJson);
+    localStorage.setItem('productos', arrayJson);
   });
 
-  
+const productosLS = localStorage.getItem('productos');
 
-const productosLS = localStorage.getItem('Productos');
 const productosRecuperadosLS = JSON.parse(productosLS);
 
-
-
+//////////////////////////////////////////////////////////////////////////
 
 document.getElementById("tituloFormulario").innerHTML= `¿Tenés alguna duda de nuestros productos? Contactate con nosotros`
 document.getElementById("tituloFormulario").className= "py-4 mt-5"
-
-
-
-
-  
 document.getElementById("dudaForm").addEventListener("submit", function(event) {
   event.preventDefault();
 
@@ -115,18 +91,3 @@ function correccionEmail(email) {
 }
 
 
-
-
-
-
-  
-
-
-function guardarEmailLS() {
-  let email = document.getElementById("email");
-  localStorage.setItem("Email Usuario" , JSON.stringify(email.value));
-}
-
-
-
-  /////////////////////////////////////
